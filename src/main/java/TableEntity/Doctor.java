@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
-/***
- *  Класс данных о докторе
+/**
+ * Данные о докторе
  */
 public class Doctor {
     private int intDoctorId;

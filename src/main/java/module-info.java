@@ -1,4 +1,4 @@
-module com.example.databases1 {
+module GUI {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -9,4 +9,6 @@ module com.example.databases1 {
 
     opens GUI to javafx.fxml;
     exports GUI;
+    exports TableEntity;
+    exports Connection;
 }
