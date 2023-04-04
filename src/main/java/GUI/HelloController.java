@@ -3,6 +3,7 @@ package GUI;
 import TableEntity.Doctor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -13,8 +14,6 @@ import java.util.Date;
 import java.util.List;
 
 public class HelloController {
-    @FXML
-    private Label welcomeText;
     @FXML
     public TableView<Doctor> doctorTable;
     @FXML
@@ -41,7 +40,10 @@ public class HelloController {
         doctorTable.setItems(doctorFXList);
     }
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    public void onAddDoctorButtonClick(ActionEvent actionEvent) {
+
+    }
+
+    public void onCancelButtonClick(ActionEvent actionEvent) {
     }
 }
