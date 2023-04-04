@@ -6,10 +6,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 
 public class DoctorController {
@@ -30,7 +35,7 @@ public class DoctorController {
         datDoctorWork.setCellValueFactory(new PropertyValueFactory<>("datDoctorWork"));
 
         // Загрузка данных
-        mainModel = new MainModel();
+//        mainModel = new MainModel();
         ObservableList<Doctor> doctorFXList = FXCollections.observableArrayList();
         mainModel.loadDoctor();
 
@@ -39,8 +44,18 @@ public class DoctorController {
         doctorTable.setItems(doctorFXList);
     }
     @FXML
-    public void onAddDoctorButtonClick(ActionEvent actionEvent) {
+    public void onAddDoctorButtonClick(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
 
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("new-doctor.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root, 1000, 400);
+
+//        stage.setResizable(false); // Запрет на изменения окна
+        stage.setTitle("Добавить доктора");
+        stage.setScene(scene);
+
+        stage.showAndWait();
     }
 
     public void onCancelButtonClick(ActionEvent actionEvent) {
