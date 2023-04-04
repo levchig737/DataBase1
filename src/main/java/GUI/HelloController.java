@@ -9,27 +9,42 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.util.HashMap;
+import java.util.Date;
+import java.util.List;
 
 public class HelloController {
     @FXML
     private Label welcomeText;
     @FXML
-    public TableView<Doctor> mainTable;
+    public TableView<Doctor> doctorTable;
     @FXML
-    public TableColumn <Doctor, String> columnFIO;
+    public TableColumn <Doctor, String> txtDoctorName;
     @FXML
-    public TableColumn <Doctor, String> columnDateBirthday;
+    public TableColumn <Doctor, String> txtSpecialist;
     @FXML
-    public TableColumn<Doctor, String> columnAddress;
+    public TableColumn<Doctor, String> datDoctorWork;
 
-    public javafx.collections.ObservableList<Doctor> list = FXCollections.observableArrayList();
+    public MainModel mainModel;
 
+    public void initialize() {
+        txtDoctorName.setCellValueFactory(new PropertyValueFactory<Doctor, String>("txtDoctorName"));
+        txtSpecialist.setCellValueFactory(new PropertyValueFactory<Doctor,String>("txtSpecialist"));
+        datDoctorWork.setCellValueFactory(new PropertyValueFactory<Doctor,String>("datDoctorWork"));
+
+        // Загрузка данных
+        mainModel = new MainModel();
+        List<Doctor> doctor4List = mainModel.loadDoctor();
+
+        // Добавление данных
+        ObservableList<Doctor> doctorList = FXCollections.observableArrayList();
+        doctorList.add(new Doctor("Герасименко Марк Сергеевич", "Стоматолог", new Date(1010101010)));
+        doctorList.add(new Doctor("Власова Ангелина Алексевна", "Терапевт", new Date(102123123)));
+        doctorTable.setItems(doctorList);
+        doctorTable.setTableMenuButtonVisible(false);
+
+    }
     @FXML
     protected void onHelloButtonClick() {
-        columnFIO.setCellValueFactory(new PropertyValueFactory<Doctor, String>("txtFIO"));
-        columnDateBirthday.setCellValueFactory(new PropertyValueFactory<Doctor,String>("dateBirthday"));
-        columnAddress.setCellValueFactory(new PropertyValueFactory<Doctor,String>("txtAddress"));
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 }

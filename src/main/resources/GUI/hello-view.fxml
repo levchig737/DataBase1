@@ -15,11 +15,11 @@
 
     <Label fx:id="welcomeText"/>
 
-    <TableView id="TableView" fx:id="mainTable" prefHeight="336.0" prefWidth="595.0">
+    <TableView id="TableView" fx:id="doctorTable" prefHeight="340.0" prefWidth="600.0">
         <columns>
-            <TableColumn fx:id="columnFIO" prefWidth="200.0" text="ФИО" />
-            <TableColumn fx:id="columnDateBirthday" prefWidth="100.0" text="Дата Рождения" />
-            <TableColumn fx:id="columnAddress" prefWidth="290.0" text="Адресс" />
+            <TableColumn fx:id="txtDoctorName" prefWidth="400.0" text="ФИО доктора" />
+            <TableColumn fx:id="txtSpecialist" prefWidth="300.0" text="Специальность" />
+            <TableColumn fx:id="datDoctorWork" prefWidth="255.0" text="Дата приема на работу" />
         </columns>
     </TableView>
     <Button text="Hello!" onAction="#onHelloButtonClick"/>

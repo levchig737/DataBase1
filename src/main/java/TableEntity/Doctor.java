@@ -12,6 +12,7 @@ public class Doctor {
     private String txtDoctorName;
     private String txtSpecialist;
     private Date datDoctorWork;
+    private int intReceptionCount;
 
     /**
      * Сеттер id доктора
@@ -82,19 +83,30 @@ public class Doctor {
         this.datDoctorWork = datDoctorWork;
     }
 
-//    public Doctor() {
-//
-//    }
-//    public Doctor(String txtDoctorName,
-//                  String txtSpecialist,
-//                  Date datDoctorWork) {
-//        this.setDatDoctorWork(datDoctorWork);
-//        this.setTxtDoctorName(txtDoctorName);
-//        this.setTxtSpecialist(txtSpecialist);
-//    }
+    /**
+     * Геттер кол-ва приянтых пациентов
+     * @return кол-во приянтых пациентов int
+     */
+    public int getIntReceptionCount() {return intReceptionCount;};
+
+    /**
+     * Сеттер кол-ва приянтых пациентов
+     * @param intReceptionCount кол-ва приянтых пациентов типа int
+     */
+    public void setIntReceptionCount(int intReceptionCount) {
+         this.intReceptionCount = intReceptionCount;
+    }
+
+    public Doctor(String txtDoctorName,
+                  String txtSpecialist,
+                  Date datDoctorWork) {
+        this.setDatDoctorWork(datDoctorWork);
+        this.setTxtDoctorName(txtDoctorName);
+        this.setTxtSpecialist(txtSpecialist);
+    }
 
     /***
-     *  Конструктор, устанавливает значения полям объекта
+     * Конструктор, устанавливает значения полям объекта
      * @param map хэш-таблица пар атрибут-кортеж
      */
     public Doctor(Map<String, Object> map)  {
@@ -102,6 +114,8 @@ public class Doctor {
         this.setTxtSpecialist((String) map.get("txtSpecialist"));
         this.setTxtDoctorName((String) map.get("txtDoctorName"));
         this.setDatDoctorWork((Date)map.get("datDoctorWork"));
+        this.setIntReceptionCount((int) map.get("intReceptionCount"));
+
     }
 //    public Doctor(int intDoctorId,
 //                  String txtDoctorName,
