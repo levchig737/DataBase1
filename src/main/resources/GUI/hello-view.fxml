@@ -14,7 +14,7 @@
     </padding>
 
     <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+
     <TableView id="TableView" fx:id="mainTable" prefHeight="336.0" prefWidth="595.0">
         <columns>
             <TableColumn fx:id="columnFIO" prefWidth="200.0" text="ФИО" />
@@ -22,4 +22,5 @@
             <TableColumn fx:id="columnAddress" prefWidth="290.0" text="Адресс" />
         </columns>
     </TableView>
+    <Button text="Hello!" onAction="#onHelloButtonClick"/>
 </VBox>
