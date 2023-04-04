@@ -8,19 +8,19 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Начальное окно форма Доктора
+ * Устаревшая Форма. Осталась для примера, не используется в приложении
  */
-public class HelloApplication extends Application {
+public class DoctorForm extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(DoctorForm.class.getResource("doctor-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 400);
 
         // Минимальные размеры окна
         stage.setMinWidth(400);
         stage.setMinHeight(300);
 
-        stage.setTitle("Изменение данных db22207");
+        stage.setTitle("Доктора");
         stage.setScene(scene);
         stage.show();
     }

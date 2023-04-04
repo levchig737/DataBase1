@@ -1,47 +1,37 @@
 package GUI;
 
 import TableEntity.Doctor;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-import java.util.List;
+import java.io.IOException;
+
 
 public class HelloController {
-    @FXML
-    public TableView<Doctor> doctorTable;
-    @FXML
-    public TableColumn <Doctor, String> txtDoctorName;
-    @FXML
-    public TableColumn <Doctor, String> txtSpecialist;
-    @FXML
-    public TableColumn<Doctor, String> datDoctorWork;
-
-    public MainModel mainModel;
-
+    public MainModel mainModel = new MainModel();
     public void initialize() {
-        txtDoctorName.setCellValueFactory(new PropertyValueFactory<>("txtDoctorName"));
-        txtSpecialist.setCellValueFactory(new PropertyValueFactory<>("txtSpecialist"));
-        datDoctorWork.setCellValueFactory(new PropertyValueFactory<>("datDoctorWork"));
-
-        // Загрузка данных
-        mainModel = new MainModel();
-        ObservableList<Doctor> doctorFXList = FXCollections.observableArrayList();
-        List<Doctor> doctorList = mainModel.loadDoctor();
-
-        // Добавление данных
-        doctorFXList.addAll(doctorList);
-        doctorTable.setItems(doctorFXList);
-    }
-    @FXML
-    public void onAddDoctorButtonClick(ActionEvent actionEvent) {
 
     }
 
-    public void onCancelButtonClick(ActionEvent actionEvent) {
+    public void onOpenDoctorForm(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("doctor-view.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root, 1000, 400);
+
+//        stage.setResizable(false); // Запрет на изменения окна
+        stage.setScene(scene);
+
+        stage.showAndWait();
+    }
+
+    public void onOpenAppointmentForm(ActionEvent actionEvent) {
     }
 }
