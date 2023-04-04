@@ -33,15 +33,12 @@ public class HelloController {
 
         // Загрузка данных
         mainModel = new MainModel();
-        List<Doctor> doctor4List = mainModel.loadDoctor();
+        ObservableList<Doctor> doctorFXList = FXCollections.observableArrayList();
+        List<Doctor> doctorList = mainModel.loadDoctor();
 
         // Добавление данных
-        ObservableList<Doctor> doctorList = FXCollections.observableArrayList();
-        doctorList.add(new Doctor("Герасименко Марк Сергеевич", "Стоматолог", new Date(1010101010)));
-        doctorList.add(new Doctor("Власова Ангелина Алексевна", "Терапевт", new Date(102123123)));
-        doctorTable.setItems(doctorList);
-        doctorTable.setTableMenuButtonVisible(false);
-
+        doctorFXList.addAll(doctorList);
+        doctorTable.setItems(doctorFXList);
     }
     @FXML
     protected void onHelloButtonClick() {
