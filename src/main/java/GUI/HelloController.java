@@ -35,7 +35,7 @@ public class HelloController {
         stage.setTitle("Доктора");
         stage.setScene(scene);
 
-        stage.showAndWait();
+        stage.show();
     }
 
     public void onOpenAppointmentForm(ActionEvent actionEvent) {

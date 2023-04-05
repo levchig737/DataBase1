@@ -135,5 +135,15 @@ public class DBConnection {
         );
         return docs;
     }
+    public <T> void InsertValue(String tableName, T value) {
+        this.ex(String.format("insert into %s (txtDoctorName, txtSpecialist, datDoctorWork, intReceptionCount) values(%s, 0);",
+                tableName,
+                value.toString()));
+    }
+    public <T> void InsertValue(String tableName, List<T> value) {
+        for(var current : value) {
+            this.InsertValue(tableName, current);
+        }
+    }
 }
 

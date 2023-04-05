@@ -35,7 +35,6 @@ public class DoctorController {
         datDoctorWork.setCellValueFactory(new PropertyValueFactory<>("datDoctorWork"));
 
         // Загрузка данных
-//        mainModel = new MainModel();
         ObservableList<Doctor> doctorFXList = FXCollections.observableArrayList();
         mainModel.loadDoctor();
 
@@ -48,10 +47,14 @@ public class DoctorController {
         Stage stage = new Stage();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("new-doctor.fxml"));
+
+        NewDoctorController controller = new NewDoctorController();
+        controller.mainModel = mainModel;
+        fxmlLoader.setController(controller);
+
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 1000, 400);
 
-//        stage.setResizable(false); // Запрет на изменения окна
         stage.setTitle("Добавить доктора");
         stage.setScene(scene);
 

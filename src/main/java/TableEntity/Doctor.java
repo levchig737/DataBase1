@@ -135,7 +135,7 @@ public class Doctor {
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
         String strDate = formater.format(getDatDoctorWork());
 
-        return String.format("N'%s', N'%s', '%s'",
+        return String.format("'%s', '%s', '%s'",
                 getTxtDoctorName(),
                 getTxtSpecialist(),
                 strDate);

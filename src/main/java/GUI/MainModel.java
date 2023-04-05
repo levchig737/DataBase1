@@ -29,4 +29,11 @@ public class MainModel {
     public void loadDoctor() {
         this.doctorList = connection.getDoctor();
     }
+    public void addDoctor(Doctor doctor) {
+        System.out.println("add doctor :" + doctor.toString());
+        connection.InsertValue("tblDoctor", doctor);
+        List<Doctor> dc = connection.getDoctor();
+        doctorList.clear();
+        doctorList.addAll(dc);
+    }
 }

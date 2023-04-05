@@ -12,8 +12,6 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       minWidth="600"
       minHeight="400">
-<!--      fx:controller="GUI.DoctorController"-->
-
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
