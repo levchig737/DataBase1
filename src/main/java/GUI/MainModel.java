@@ -12,6 +12,7 @@ import java.util.List;
 public class MainModel {
     private final DBConnection connection = new DBConnection();
     int ptId;
+    private Doctor selectedDoctor;
     String patientName;
 //    public StageWrapper data = new StageWrapper();
 
@@ -29,6 +30,18 @@ public class MainModel {
     public void loadDoctor() {
         this.doctorList = connection.getDoctor();
     }
+
+    public void setSelectedDoctor(Doctor doctor) {
+        this.selectedDoctor = doctor;
+    }
+    public Doctor getSelectedDoctor() {
+        return this.selectedDoctor;
+    }
+
+    /**
+     * Добавление доктора в БД
+     * @param doctor эл
+     */
     public void addDoctor(Doctor doctor) {
         System.out.println("add doctor :" + doctor.toString());
         connection.InsertValue("tblDoctor", doctor);

@@ -12,7 +12,7 @@ public class Doctor {
     private String txtDoctorName;
     private String txtSpecialist;
     private Date datDoctorWork;
-    private int intReceptionCount;
+    private int intReceptionCount = 0;
 
     /**
      * Сеттер id доктора
@@ -97,6 +97,12 @@ public class Doctor {
          this.intReceptionCount = intReceptionCount;
     }
 
+    /**
+     * Конструктор со значениями без map
+     * @param txtDoctorName текстовое имя
+     * @param txtSpecialist текстовая специальность
+     * @param datDoctorWork дата работы
+     */
     public Doctor(String txtDoctorName,
                   String txtSpecialist,
                   Date datDoctorWork) {
@@ -135,10 +141,11 @@ public class Doctor {
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
         String strDate = formater.format(getDatDoctorWork());
 
-        return String.format("'%s', '%s', '%s'",
+        return String.format("'%s', '%s', '%s', '%s'",
                 getTxtDoctorName(),
                 getTxtSpecialist(),
-                strDate);
+                strDate,
+                getIntReceptionCount());
     }
 //    public String toString(int withId) {
 //        if (withId != 1) return this.toString();

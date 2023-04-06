@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="GUI.HelloController"
       minWidth="600"
       minHeight="400">
     <padding>

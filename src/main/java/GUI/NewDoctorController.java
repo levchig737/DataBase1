@@ -31,8 +31,6 @@ public class NewDoctorController implements Initializable {
     @FXML
     public TextField textFieldSpecial;
     @FXML
-//    public TextField textFieldDoctorWork;
-
     public DatePicker dataPickerWork;
 
     public MainModel mainModel;
@@ -41,6 +39,11 @@ public class NewDoctorController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
+    /**
+     * Кнопка "Добавить доктора"
+     * @param actionEvent нажатие на кнопку
+     * @throws IOException Ошибка какая-то
+     */
     @FXML
     public void onAddDoctor(ActionEvent actionEvent) throws IOException {
         String name = textFieldDoctorName.getText();
@@ -52,12 +55,28 @@ public class NewDoctorController implements Initializable {
 
         Doctor newDoctor = new Doctor(name, special, dataWork);
 
+        // Добавляем доктора в БД
         this.mainModel.addDoctor(newDoctor);
-
-        // Добавление доктора в базу данных
-
     }
 
-    public void onCancelButtonClick(ActionEvent actionEvent) {
+    public void onCancelButtonClick(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("doctor-view.fxml"));
+
+        DoctorController controller = new DoctorController();
+        controller.mainModel = mainModel;
+        fxmlLoader.setController(controller);
+
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root, 1000, 400);
+
+//        stage.setResizable(false); // Запрет на изменения окна
+        stage.setTitle("Доктора");
+        stage.setScene(scene);
+
+        // Закрываем прошлое окно
+        stage.show();
+        ((Stage)((Node) actionEvent.getSource()).getScene().getWindow()).close();
     }
 }

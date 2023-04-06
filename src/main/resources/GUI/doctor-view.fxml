@@ -16,11 +16,11 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <TableView stylesheets="@main-view.css" id="TableView" fx:id="doctorTable" prefHeight="340.0" prefWidth="600.0" maxWidth="960">
+    <TableView stylesheets="@main-view.css" id="TableView" fx:id="doctorTable" prefHeight="400.0" prefWidth="600.0" maxWidth="960" onMouseClicked="#handleClick">
         <columns>
             <TableColumn fx:id="txtDoctorName" prefWidth="400.0" text="ФИО доктора" />
             <TableColumn fx:id="txtSpecialist" prefWidth="300.0" text="Специальность" />
-            <TableColumn fx:id="datDoctorWork" prefWidth="255.0" text="Дата приема на работу" />
+            <TableColumn fx:id="datDoctorWork" prefWidth="240.0" text="Дата приема на работу" />
         </columns>
     </TableView>
 

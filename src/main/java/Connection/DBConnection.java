@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
-/***
+/**
  * Класс подключения к базе данных
  */
 public class DBConnection {
@@ -135,11 +135,25 @@ public class DBConnection {
         );
         return docs;
     }
+
+    /**
+     * Выполняет insert запрос 1го элемента T в БД
+     * @param tableName Название таблицы, к которой обращаемся
+     * @param value переданный объект типа T
+     * @param <T> Doctor...
+     */
     public <T> void InsertValue(String tableName, T value) {
-        this.ex(String.format("insert into %s (txtDoctorName, txtSpecialist, datDoctorWork, intReceptionCount) values(%s, 0);",
+        this.ex(String.format("insert into %s (txtDoctorName, txtSpecialist, datDoctorWork, intReceptionCount) values(%s);",
                 tableName,
                 value.toString()));
     }
+
+    /**
+     * Выполняет запрос для списка элементов
+     * @param tableName Название таблицы, к которой обращаемся
+     * @param value переданный объект типа T
+     * @param <T> Doctor...
+     */
     public <T> void InsertValue(String tableName, List<T> value) {
         for(var current : value) {
             this.InsertValue(tableName, current);
