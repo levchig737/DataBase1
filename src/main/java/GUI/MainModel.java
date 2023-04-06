@@ -2,6 +2,8 @@ package GUI;
 
 import Connection.DBConnection;
 import TableEntity.Doctor;
+import TableEntity.Patient;
+import TableEntity.Reception;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,27 +18,48 @@ public class MainModel {
     String patientName;
 //    public StageWrapper data = new StageWrapper();
 
-    List<Doctor> doctorList = new ArrayList<>();
+    public List<Doctor> doctorList = new ArrayList<>();
+    public List<Reception> receptionList = new ArrayList<>();
+    public List<Patient> patientList = new ArrayList<>();
 
     /**
-     * Конструктор с созданием списка
+     * Конструктор с загрузкой всех таблиц
      */
     public MainModel() {
+        this.loadDoctor();
+        this.loadReception();
+        this.loadPatient();
     }
 
     /**
-     * Загрузка данных из таблицы
+     * Загрузка данных из таблицы tblDoctor
      */
     public void loadDoctor() {
         this.doctorList = connection.getDoctor();
     }
 
+    /**
+     * Установка выбранного доктора
+     * @param doctor доктор
+     */
     public void setSelectedDoctor(Doctor doctor) {
         this.selectedDoctor = doctor;
     }
+
+    /**
+     * Возвращает последнего нажатого доктора в таблице Доктора
+     * @return нажатый доктор
+     */
     public Doctor getSelectedDoctor() {
         return this.selectedDoctor;
     }
+
+    /**
+     * Загрузка данныз из таблицы tblReception
+     */
+    public void loadReception() {this.receptionList = connection.getReception();}
+
+    public void loadPatient() {this.patientList = connection.getPatient();}
 
     /**
      * Добавление доктора в БД

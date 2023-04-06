@@ -136,6 +136,22 @@ public class DBConnection {
         return docs;
     }
 
+    public List<Reception> getReception() {
+        List<Reception> recs = new ArrayList<>();
+        this.ex("select * from tblReception").forEach(
+                (current) -> recs.add(new Reception(current))
+        );
+        return recs;
+    }
+
+    public List<Patient> getPatient() {
+        List<Patient> pt = new ArrayList<>();
+        this.ex("select * from tblPatient").forEach(
+                (current) -> pt.add(new Patient(current))
+        );
+        return pt;
+    }
+
     /**
      * Выполняет insert запрос 1го элемента T в БД
      * @param tableName Название таблицы, к которой обращаемся

@@ -1,6 +1,5 @@
 package GUI;
 
-import GUI.MainModel;
 import TableEntity.Doctor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,9 +38,8 @@ public class DoctorController {
         txtSpecialist.setCellValueFactory(new PropertyValueFactory<>("txtSpecialist"));
         datDoctorWork.setCellValueFactory(new PropertyValueFactory<>("datDoctorWork"));
 
-        // Загрузка данных
+        // Создаем список для загрузки в TableView
         ObservableList<Doctor> doctorFXList = FXCollections.observableArrayList();
-        mainModel.loadDoctor();
 
         // Добавление данных
         doctorFXList.addAll(mainModel.doctorList);
@@ -112,9 +110,9 @@ public class DoctorController {
         // Выполнение действия, которое необходимо при выборе ячейки таблицы
         Stage stage = new Stage();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("approintment-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("reception-view.fxml"));
 
-        ApprointmentController controller = new ApprointmentController();
+        ReceptionController controller = new ReceptionController();
         mainModel.setSelectedDoctor(selectedDoctor);
         controller.mainModel = mainModel;
         fxmlLoader.setController(controller);
