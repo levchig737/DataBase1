@@ -4,9 +4,11 @@ import Connection.DBConnection;
 import TableEntity.Doctor;
 import TableEntity.Patient;
 import TableEntity.Reception;
+import TableEntity.ReceptionWithNamePatient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Основная модель с данным для таблицы
@@ -21,6 +23,7 @@ public class MainModel {
     public List<Doctor> doctorList = new ArrayList<>();
     public List<Reception> receptionList = new ArrayList<>();
     public List<Patient> patientList = new ArrayList<>();
+    public List<ReceptionWithNamePatient> receptionWithPatient = new ArrayList<>();
 
     /**
      * Конструктор с загрузкой всех таблиц
@@ -71,5 +74,19 @@ public class MainModel {
         List<Doctor> dc = connection.getDoctor();
         doctorList.clear();
         doctorList.addAll(dc);
+    }
+
+    /**
+     * Запрос на соединения 2х списков receptionList и patientList по patientId
+     * Записываем данные в поле receptionWithPatient
+     */
+    public void connectReceptionWithPatient(){
+        this.receptionWithPatient = this.receptionList.stream()
+                .flatMap(reception -> // принимает функцию и преобразует каждый элемент исходного потока в новый поток
+                        this.patientList.stream() // создаем поток по списку
+                                .filter(patient -> reception.getIntPatientId() == patient.getIntPatientId()) // select
+                                .map(patient -> new ReceptionWithNamePatient(reception, patient)) // создаем новый объект
+                )
+                .collect(Collectors.toList());
     }
 }

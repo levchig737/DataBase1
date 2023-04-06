@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * Данные о докторе
+ * Данные о приеме
  */
 public class Reception {
     private int intReceptionId;
@@ -14,7 +14,6 @@ public class Reception {
     private String txtReceptionTime;
     private String txtReceptionRoom;
     private String txtReceptionResult;
-
     public int getIntReceptionId() {
         return intReceptionId;
     }

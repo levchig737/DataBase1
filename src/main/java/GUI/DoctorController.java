@@ -4,18 +4,25 @@ import TableEntity.Doctor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventTarget;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.DepthTest;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.PickResult;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.PipedInputStream;
 
 public class DoctorController {
     @FXML
@@ -28,7 +35,7 @@ public class DoctorController {
     public TableColumn<Doctor, String> datDoctorWork;
 
     public MainModel mainModel;
-    public Stage previousStage;
+    private Doctor selectedDoctor;
 
     /**
      * Инициализация таблицы TableView
@@ -44,6 +51,12 @@ public class DoctorController {
         // Добавление данных
         doctorFXList.addAll(mainModel.doctorList);
         doctorTable.setItems(doctorFXList);
+
+        // Выставляем ширину столбцов на всю ширину таблицы
+        doctorTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+//        txtReceptionResult.setMaxWidth(400.0);
+//        txtReceptionResult.setMinWidth(350.0);
+
     }
 
     /**
@@ -103,9 +116,13 @@ public class DoctorController {
      * @param event событие
      */
     @FXML
-    private void handleClick(MouseEvent event) throws IOException {
+    private void handleClick(KeyEvent event) throws IOException {
         // Обработка щелчка мыши на таблице
-        Doctor selectedDoctor = doctorTable.getSelectionModel().getSelectedItem();
+        if (event.getCode() != KeyCode.ENTER) return;
+
+        selectedDoctor = doctorTable.getSelectionModel().getSelectedItem();
+        if (selectedDoctor == null) return;
+
 
         // Выполнение действия, которое необходимо при выборе ячейки таблицы
         Stage stage = new Stage();
@@ -118,7 +135,7 @@ public class DoctorController {
         fxmlLoader.setController(controller);
 
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 1000, 400);
+        Scene scene = new Scene(root, 1100, 600);
 
         stage.setTitle("Прием");
         stage.setScene(scene);

@@ -45,13 +45,15 @@
         </children>
     </GridPane>
 
-<!--    <TableView stylesheets="@main-view.css" id="TableView" fx:id="approintmentTable" prefHeight="400.0" prefWidth="600.0" maxWidth="960" onMouseClicked="#handleClick">-->
-<!--        <columns>-->
-<!--            <TableColumn fx:id="txtDoctorName" prefWidth="400.0" text="ФИО доктора" />-->
-<!--            <TableColumn fx:id="txtSpecialist" prefWidth="300.0" text="Специальность" />-->
-<!--            <TableColumn fx:id="datDoctorWork" prefWidth="240.0" text="Дата приема на работу" />-->
-<!--        </columns>-->
-<!--    </TableView>-->
+    <TableView stylesheets="@main-view.css" id="TableView" fx:id="receptionTable" prefWidth="600.0" onMouseClicked="#handleClick">
+        <columns>
+            <TableColumn fx:id="txtReceptionDate" prefWidth="100.0" text="Дата приема" />
+            <TableColumn fx:id="txtReceptionTime" prefWidth="100.0" text="Время приема" />
+            <TableColumn fx:id="txtReceptionRoom" prefWidth="100.0" text="Номер кабинета" />
+            <TableColumn fx:id="txtPatientFullName" prefWidth="400.0" text="Фамилия и имя пациента" />
+            <TableColumn fx:id="txtReceptionResult" prefWidth="600.0" text="Заключение" />
+        </columns>
+    </TableView>
 
 <!--    <HBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml">-->
 <!--        <Button HBox.hgrow="ALWAYS" alignment="CENTER" maxWidth="Infinity" mnemonicParsing="false" onAction="#onAddApproinment" style="-fx-background-color: #3A98B9; -fx-background-radius: 10;" text="Добавить доктора" textAlignment="CENTER" textFill="WHITE">-->

@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * Данные о докторе
+ * Данные о пациенте
  */
 public class Patient {
     private int intPatientId;

@@ -125,7 +125,7 @@ public class DBConnection {
     }
 
     /***
-     * Метод получения данных из таблицы Doctor
+     * Метод получения данных из таблицы tblDoctor
      * @return список типа Doctor кортежей из таблицы
      */
     public List<Doctor> getDoctor() {
@@ -136,6 +136,10 @@ public class DBConnection {
         return docs;
     }
 
+    /***
+     * Метод получения данных из таблицы tblReception
+     * @return список типа Reception кортежей из таблицы
+     */
     public List<Reception> getReception() {
         List<Reception> recs = new ArrayList<>();
         this.ex("select * from tblReception").forEach(
@@ -144,6 +148,10 @@ public class DBConnection {
         return recs;
     }
 
+    /***
+     * Метод получения данных из таблицы Patient
+     * @return список типа Patient кортежей из таблицы
+     */
     public List<Patient> getPatient() {
         List<Patient> pt = new ArrayList<>();
         this.ex("select * from tblPatient").forEach(
