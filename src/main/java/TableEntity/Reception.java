@@ -1,5 +1,6 @@
 package TableEntity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ public class Reception {
         this.intReceptionId = intReceptionId;
     }
 
-    public int getIntDoctorId(){
+    public int getIntDoctorId() {
         return intDoctorId;
     }
 
@@ -39,7 +40,7 @@ public class Reception {
         this.intPatientId = intPatientId;
     }
 
-    public Date getDatReceptionDate(){
+    public Date getDatReceptionDate() {
         return datReceptionDate;
     }
 
@@ -47,7 +48,7 @@ public class Reception {
         this.datReceptionDate = datReceptionDate;
     }
 
-    public String getTxtReceptionTime(){
+    public String getTxtReceptionTime() {
         if (txtReceptionTime != null && txtReceptionTime.length() <= 5)
             this.txtReceptionTime = txtReceptionTime.trim();
         else this.txtReceptionTime = "";
@@ -58,7 +59,7 @@ public class Reception {
         this.txtReceptionTime = txtReceptionTime;
     }
 
-    public String getTxtReceptionRoom(){
+    public String getTxtReceptionRoom() {
         if (txtReceptionRoom != null && txtReceptionRoom.length() <= 5)
             this.txtReceptionRoom = txtReceptionRoom.trim();
         else this.txtReceptionRoom = "";
@@ -69,7 +70,7 @@ public class Reception {
         this.txtReceptionRoom = txtReceptionRoom;
     }
 
-    public String getTxtReceptionResult(){
+    public String getTxtReceptionResult() {
         if (txtReceptionResult != null && txtReceptionResult.length() <= 255)
             this.txtReceptionResult = txtReceptionResult.trim();
         else this.txtReceptionResult = "";
@@ -80,14 +81,16 @@ public class Reception {
         this.txtReceptionResult = txtReceptionResult;
     }
 
-    public int getReceptionRoom(){
+    public int getReceptionRoom() {
         return Integer.parseInt(getTxtReceptionRoom());
     }
+
     /**
      * Конструктор Reception после запроса в БД
+     *
      * @param map хэш таблица с данными таблицы
      */
-    public Reception(Map<String, Object> map){
+    public Reception(Map<String, Object> map) {
         this.setIntReceptionId((int) map.get("intReceptionId"));
         this.setIntDoctorId((int) map.get("intDoctorId"));
         this.setIntPatientId((int) map.get("intPatientId"));
@@ -107,4 +110,16 @@ public class Reception {
         this.setTxtReceptionResult(receptionResult);
     }
 
+    public String toString() {
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate = formater.format(getDatReceptionDate());
+
+        return String.format("'%s', '%s', '%s', '%s', '%s', '%s'",
+                getIntDoctorId(),
+                getIntPatientId(),
+                strDate,
+                getTxtReceptionTime(),
+                getReceptionRoom(),
+                getTxtReceptionResult());
+    }
 }

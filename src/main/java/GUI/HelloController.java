@@ -38,7 +38,4 @@ public class HelloController {
         ((Stage)((Node) actionEvent.getSource()).getScene().getWindow()).close();
 
     }
-
-    public void onOpenAppointmentForm(ActionEvent actionEvent) {
-    }
 }

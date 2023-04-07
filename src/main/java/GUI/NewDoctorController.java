@@ -57,6 +57,8 @@ public class NewDoctorController implements Initializable {
 
         // Добавляем доктора в БД
         this.mainModel.addDoctor(newDoctor);
+
+        onCancelButtonClick(actionEvent);
     }
 
     public void onCancelButtonClick(ActionEvent actionEvent) throws IOException {

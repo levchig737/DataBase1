@@ -87,9 +87,6 @@ public class DBConnection {
      * @return список хэш-таблиц атрибут-кортеж
      */
     public List<Map<String, Object>> ex(String query) {
-//        if (isLog == true) {
-//            System.out.println(query);
-//        }
         try {
             if (!connection.isValid(1)) {
                 throw new RuntimeException();
@@ -171,7 +168,7 @@ public class DBConnection {
                 value.toString()));
     }
     public void InsertValue(String tableName, Reception value) {
-        this.ex(String.format("insert into %s (intDoctorId, intPatientId, datReceptionDate, receptionTime, receptionRoom, receptionResult) values(%s);",
+        this.ex(String.format("insert into %s (intDoctorId, intPatientId, datReceptionDate, txtReceptionTime, txtReceptionRoom, txtReceptionResult) values(%s);",
                 tableName,
                 value.toString()));
     }

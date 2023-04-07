@@ -8,6 +8,7 @@ import TableEntity.ReceptionWithNamePatient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -92,5 +93,16 @@ public class MainModel {
                                 .map(patient -> new ReceptionWithNamePatient(reception, patient)) // создаем новый объект
                 )
                 .collect(Collectors.toList());
+    }
+
+    public int getPatientId(String txtPatientFullName) {
+        Optional<Patient> selectedPatient = this.patientList.stream()
+                .filter(patient -> patient.getFullPatientName().equals(txtPatientFullName))
+                .findFirst();
+
+        if (selectedPatient.isPresent()) {
+            return selectedPatient.get().getIntPatientId();
+        }
+        else return -1;
     }
 }

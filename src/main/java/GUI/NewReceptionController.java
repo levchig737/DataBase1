@@ -99,11 +99,11 @@ public class NewReceptionController implements Initializable {
         String patientName = txtPatientName.getSelectionModel().getSelectedItem();
 
         // Получаем индекс пацинета
-        Optional<Patient> selectedPatient = mainModel.patientList.stream()
-                .filter(patient -> patient.getFullPatientName().equals(patientName))
-                .findFirst();
-
-        selectedPatient.ifPresent(patient -> intPatientId = patient.getIntPatientId());
+        intPatientId = mainModel.getPatientId(patientName);
+        if (intPatientId < 0){
+            System.err.println("Not exists patient");
+            throw new RuntimeException();
+        }
     }
 
     @FXML
