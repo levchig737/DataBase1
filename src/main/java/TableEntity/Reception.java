@@ -14,6 +14,7 @@ public class Reception {
     private String txtReceptionTime;
     private String txtReceptionRoom;
     private String txtReceptionResult;
+
     public int getIntReceptionId() {
         return intReceptionId;
     }
@@ -95,4 +96,15 @@ public class Reception {
         this.setTxtReceptionRoom((String) map.get("txtReceptionRoom"));
         this.setTxtReceptionResult((String) map.get("txtReceptionResult"));
     }
+
+    public Reception(int intDoctorId, int intPatientId, Date datReceptionDate, String receptionTime,
+                     String receptionRoom, String receptionResult) {
+        this.setIntDoctorId(intDoctorId);
+        this.setIntPatientId(intPatientId);
+        this.setDatReceptionDate(datReceptionDate);
+        this.setTxtReceptionTime(receptionTime);
+        this.setTxtReceptionRoom(receptionRoom);
+        this.setTxtReceptionResult(receptionResult);
+    }
+
 }

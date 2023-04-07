@@ -163,11 +163,15 @@ public class DBConnection {
     /**
      * Выполняет insert запрос 1го элемента T в БД
      * @param tableName Название таблицы, к которой обращаемся
-     * @param value переданный объект типа T
-     * @param <T> Doctor...
+     * @param value переданный объект типа Doctor
      */
-    public <T> void InsertValue(String tableName, T value) {
+    public void InsertValue(String tableName, Doctor value) {
         this.ex(String.format("insert into %s (txtDoctorName, txtSpecialist, datDoctorWork, intReceptionCount) values(%s);",
+                tableName,
+                value.toString()));
+    }
+    public void InsertValue(String tableName, Reception value) {
+        this.ex(String.format("insert into %s (intDoctorId, intPatientId, datReceptionDate, receptionTime, receptionRoom, receptionResult) values(%s);",
                 tableName,
                 value.toString()));
     }
@@ -176,12 +180,12 @@ public class DBConnection {
      * Выполняет запрос для списка элементов
      * @param tableName Название таблицы, к которой обращаемся
      * @param value переданный объект типа T
-     * @param <T> Doctor...
+     * @param <T> Doctor, Reception
      */
-    public <T> void InsertValue(String tableName, List<T> value) {
-        for(var current : value) {
-            this.InsertValue(tableName, current);
-        }
-    }
+//    public <T> void InsertValue(String tableName, List<T> value) {
+//        for(var current : value) {
+//            this.InsertValue(tableName, current);
+//        }
+//    }
 }
 

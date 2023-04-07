@@ -71,7 +71,6 @@ public class NewDoctorController implements Initializable {
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 1000, 400);
 
-//        stage.setResizable(false); // Запрет на изменения окна
         stage.setTitle("Доктора");
         stage.setScene(scene);
 

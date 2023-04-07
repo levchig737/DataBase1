@@ -15,11 +15,7 @@ import java.util.stream.Collectors;
  */
 public class MainModel {
     private final DBConnection connection = new DBConnection();
-    int ptId;
     private Doctor selectedDoctor;
-    String patientName;
-//    public StageWrapper data = new StageWrapper();
-
     public List<Doctor> doctorList = new ArrayList<>();
     public List<Reception> receptionList = new ArrayList<>();
     public List<Patient> patientList = new ArrayList<>();
@@ -74,6 +70,14 @@ public class MainModel {
         List<Doctor> dc = connection.getDoctor();
         doctorList.clear();
         doctorList.addAll(dc);
+    }
+
+    public void addReception(Reception reception) {
+        System.out.println("add reception :" + reception.toString());
+        connection.InsertValue("tblReception", reception);
+        List<Reception> rc = connection.getReception();
+        receptionList.clear();
+        receptionList.addAll(rc);
     }
 
     /**

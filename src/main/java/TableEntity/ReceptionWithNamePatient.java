@@ -53,5 +53,6 @@ public class ReceptionWithNamePatient {
         this.txtReceptionRoom = reception.getTxtReceptionRoom();
         this.txtReceptionResult = reception.getTxtReceptionResult();
         this.txtPatientFullName = patient.getTxtPatientSurname() + " " + patient.getTxtPatientName();
+
     }
 }

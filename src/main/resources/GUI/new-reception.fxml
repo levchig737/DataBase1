@@ -60,7 +60,7 @@
         </rowConstraints>
         <children>
             <Label text="Пациент" GridPane.rowIndex="0" GridPane.columnIndex="0" />
-            <ComboBox fx:id="txtPatientName" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="txtPatientName" GridPane.rowIndex="0" GridPane.columnIndex="1" onAction="#onSetPatientName"/>
 
             <Label text="Дата приема" GridPane.rowIndex="1" GridPane.columnIndex="0" />
             <DatePicker fx:id="txtReceptionDate" GridPane.rowIndex="1" GridPane.columnIndex="1" />
@@ -69,7 +69,7 @@
             <TextField fx:id="txtReceptionTime" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
             <Label text="Кабинет" GridPane.rowIndex="3" GridPane.columnIndex="0" />
-            <ComboBox fx:id="txtReceptionRoom" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <ComboBox fx:id="txtReceptionRoom" GridPane.rowIndex="3" GridPane.columnIndex="1" onAction="#onSetReceptionRoom"/>
 
             <Label text="Заключение" GridPane.rowIndex="4" GridPane.columnIndex="0" />
             <TextField fx:id="txtReceptionResult" GridPane.rowIndex="4" GridPane.columnIndex="1"/>

@@ -15,7 +15,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -36,6 +38,14 @@ public class NewReceptionController implements Initializable {
     public TextField txtReceptionResult;
 
     public MainModel mainModel;
+    int intReceptionId;
+    int intDoctorId;
+    int intPatientId;
+
+    private Date datReceptionDate;
+    private String ReceptionTime;
+    private String ReceptionRoom;
+    private String ReceptionResult;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -56,34 +66,63 @@ public class NewReceptionController implements Initializable {
                 .sorted()
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
         txtReceptionRoom.setItems(receptionRoomList);
+    }
 
+    /**
+     * Кнопка получения и ввода данных в БД
+     * @param actionEvent событие нажатия кнопки
+     */
+    @FXML
+    private void onAddReception(ActionEvent actionEvent){
+        intDoctorId = mainModel.getSelectedDoctor().getIntDoctorId();
+
+        datReceptionDate = java.util.Date.from(txtReceptionDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        ReceptionTime = txtReceptionTime.getText();
+        ReceptionResult = txtReceptionResult.getText();
+
+        Reception reception = new Reception(intDoctorId, intPatientId, datReceptionDate, ReceptionTime,
+                ReceptionRoom, ReceptionResult);
+        this.mainModel.addReception(reception);
     }
 
     @FXML
-    private void onAddReception(ActionEvent actionEvent){
-
-
+    private void onSetReceptionRoom(ActionEvent actionEvent) {
+        ReceptionRoom = txtReceptionRoom.getSelectionModel().getSelectedItem().toString();
     }
+
+    /**
+     * Получает выбранного пациента, получает его id.
+     * @param actionEvent событие Выбора пациента
+     */
+    @FXML
+    private void onSetPatientName(ActionEvent actionEvent) {
+        String patientName = txtPatientName.getSelectionModel().getSelectedItem();
+
+        // Получаем индекс пацинета
+        Optional<Patient> selectedPatient = mainModel.patientList.stream()
+                .filter(patient -> patient.getFullPatientName().equals(patientName))
+                .findFirst();
+
+        selectedPatient.ifPresent(patient -> intPatientId = patient.getIntPatientId());
+    }
+
     @FXML
     private void onCancel(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("doctor-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("reception-view.fxml"));
 
-        DoctorController controller = new DoctorController();
+        ReceptionController controller = new ReceptionController();
         controller.mainModel = mainModel;
         fxmlLoader.setController(controller);
 
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 1000, 400);
+        Scene scene = new Scene(root, 1100, 600);
 
-//        stage.setResizable(false); // Запрет на изменения окна
-        stage.setTitle("Доктора");
+        stage.setTitle("Прием");
         stage.setScene(scene);
 
-        // Закрываем прошлое окно
         stage.show();
         ((Stage)((Node) actionEvent.getSource()).getScene().getWindow()).close();
     }
-
 }
