@@ -70,6 +70,10 @@ public class Patient {
         return txtAddress;
     }
 
+    public String getFullPatientName() {
+        return getTxtPatientSurname() + " " + getTxtPatientName() + " " + getTxtPatientSecondName();
+    }
+
     public Patient(Map<String, Object> map){
         this.setIntPatientId((int) map.get("intPatientId"));
         this.setTxtPatientSurname((String) map.get("txtPatientSurname"));

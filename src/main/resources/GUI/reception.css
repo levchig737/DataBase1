@@ -1,0 +1,22 @@
+.table-view .column-header {
+    -fx-background-color: #35ab45;
+}
+.labels {
+    -fx-font-size: 16pt;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Установка цвета фона для нечетных строк */
+.grid-pane {
+        -fx-background-color: rgba(10, 20, 100, 0.3);
+}
+
+.separator {
+    -fx-background-color: black;
+}
+
+.values {
+    -fx-font-size: 16pt;
+    -fx-alignment: CENTER_RIGHT;
+}

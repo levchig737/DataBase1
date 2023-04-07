@@ -79,6 +79,9 @@ public class Reception {
         this.txtReceptionResult = txtReceptionResult;
     }
 
+    public int getReceptionRoom(){
+        return Integer.parseInt(getTxtReceptionRoom());
+    }
     /**
      * Конструктор Reception после запроса в БД
      * @param map хэш таблица с данными таблицы
