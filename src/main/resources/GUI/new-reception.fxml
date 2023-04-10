@@ -25,7 +25,7 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <GridPane stylesheets="@reception.css" style="-fx-border-color: black; -fx-border-width: 1;" styleClass="grid-pane">
+    <GridPane stylesheets="@reception.css" style="-fx-border-color: black; -fx-border-width: 1; -fx-padding: 10px;" styleClass="grid-pane">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -46,8 +46,10 @@
         </children>
     </GridPane>
 
-    <GridPane>
+    <GridPane stylesheets="@reception.css" style="-fx-border-color: black; -fx-border-width: 1; -fx-padding: 10px;" styleClass="grid-pane2">
         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -59,20 +61,20 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
         <children>
-            <Label text="Пациент" GridPane.rowIndex="0" GridPane.columnIndex="0" />
-            <ComboBox fx:id="txtPatientName" GridPane.rowIndex="0" GridPane.columnIndex="1" onAction="#onSetPatientName"/>
+            <Label text="Пациент" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="values" />
+            <ComboBox fx:id="txtPatientName" GridPane.rowIndex="0" GridPane.columnIndex="2" onAction="#onSetPatientName"/>
 
-            <Label text="Дата приема" GridPane.rowIndex="1" GridPane.columnIndex="0" />
-            <DatePicker fx:id="txtReceptionDate" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+            <Label text="Дата приема" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="values"/>
+            <DatePicker fx:id="txtReceptionDate" GridPane.rowIndex="1" GridPane.columnIndex="2" />
 
-            <Label text="Время приема" GridPane.rowIndex="2" GridPane.columnIndex="0" />
-            <TextField fx:id="txtReceptionTime" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Время приема" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="values"/>
+            <TextField fx:id="txtReceptionTime" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
 
-            <Label text="Кабинет" GridPane.rowIndex="3" GridPane.columnIndex="0" />
-            <ComboBox fx:id="txtReceptionRoom" GridPane.rowIndex="3" GridPane.columnIndex="1" onAction="#onSetReceptionRoom"/>
+            <Label text="Кабинет" GridPane.rowIndex="3" GridPane.columnIndex="1" styleClass="values"/>
+            <ComboBox fx:id="txtReceptionRoom" GridPane.rowIndex="3" GridPane.columnIndex="2" onAction="#onSetReceptionRoom"/>
 
-            <Label text="Заключение" GridPane.rowIndex="4" GridPane.columnIndex="0" />
-            <TextField fx:id="txtReceptionResult" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            <Label text="Заключение" GridPane.rowIndex="4" GridPane.columnIndex="1" styleClass="values"/>
+            <TextField fx:id="txtReceptionResult" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
         </children>
     </GridPane>
 

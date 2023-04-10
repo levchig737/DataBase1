@@ -67,14 +67,14 @@ public class ReceptionController implements Initializable {
 
         // Выставляем ширину столбцов на всю ширину таблицы
         receptionTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        txtReceptionDate.setMaxWidth(70.0);
-        txtReceptionDate.setMinWidth(80.0);
-        txtReceptionRoom.setMaxWidth(100.0);
-        txtReceptionRoom.setMinWidth(50.0);
-        txtReceptionTime.setMaxWidth(70.0);
-        txtReceptionTime.setMinWidth(50.0);
-        txtPatientFullName.setMaxWidth(250.0);
-        txtPatientFullName.setMinWidth(200.0);
+        txtReceptionDate.setMaxWidth(110.0);
+        txtReceptionDate.setMinWidth(90.0);
+        txtReceptionRoom.setMaxWidth(120.0);
+        txtReceptionRoom.setMinWidth(100.0);
+        txtReceptionTime.setMaxWidth(110.0);
+        txtReceptionTime.setMinWidth(100.0);
+        txtPatientFullName.setMaxWidth(220.0);
+        txtPatientFullName.setMinWidth(180.0);
     }
 
     @FXML
